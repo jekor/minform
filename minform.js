@@ -1,4 +1,4 @@
-// minform 0.1 - a minimalistic JavaScript form enhancement plugin for jQuery
+// minform 0.1 - a minimalistic form enhancement plugin for jQuery
 // https://github.com/jekor/minform
 
 // Copyright 2011 Chris Forno
