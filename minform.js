@@ -8,9 +8,11 @@
 //  * jQuery >= 1.4.3
 
 (function ($) {
-  var isEmpty = function () {
-    var $input = $(this);
-    return $input.val() === '' || $input.val() === $input.attr('placeholder');
+  // We cannot rely on .val() since it might be the placeholder text. I could
+  // attempt to override val(), but I think that a better long-term solution
+  // will be to avoid putting the placeholder text into the value attribute.
+  $.fn.isEmpty = function () {
+    return this.val() === '' || this.val() === this.attr('placeholder');
   };
 
   $.fn.minform = function () {
@@ -18,7 +20,7 @@
     // To do so, insert the placeholder value into the input value and add a
     // class that allows for CSS styling.
     $('[placeholder]', this).live('blur.minform', function () {
-      if (isEmpty.call(this)) {
+      if ($(this).isEmpty()) {
         $(this).val($(this).attr('placeholder')).addClass('placeheld');
       }
     }).blur();
@@ -32,7 +34,7 @@
 
     this.submit(function () {
       // Don't submit without all required fields.
-      var missing = $('[required]', $(this)).filter(isEmpty);
+      var missing = $('[required]', this).filter(function () {return $(this).isEmpty();});
       if (missing.length) {
         // Rather than highlight all of the missing fields, re-focus the first one.
         missing[0].focus();
@@ -40,7 +42,7 @@
       }
 
       // Clear all placeholder values from non-required fields.
-      $('[placeholder]:not([required])', $(this)).filter(isEmpty).val('');
+      $('[placeholder]:not([required])', $(this)).filter(function () {return $(this).isEmpty();}).val('');
     });
 
     return this;
