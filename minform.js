@@ -19,15 +19,17 @@
     // Add placeholder text to elements with an HTML5 placeholder attribute.
     // To do so, insert the placeholder value into the input value and add a
     // class that allows for CSS styling.
-    $('[placeholder]', this).live('blur.minform', function () {
+    $(this).delegate('[placeholder]', 'blur.minform', function () {
       if ($(this).isEmpty()) {
         $(this).val($(this).attr('placeholder')).addClass('placeheld');
       }
-    }).blur();
+    });
 
-    $('.placeheld[placeholder]', this).live('focus.minform', function () {
+    $(this).delegate('.placeheld[placeholder]', 'focus.minform', function () {
       $(this).val('').removeClass('placeheld');
     });
+
+    $(this).find('[placeholder]').blur();
 
     // Focus any inputs with attribute autofocus.
     $('[autofocus]', this).focus();
