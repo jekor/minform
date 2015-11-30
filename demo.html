@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minform Demo</title>
+  <style type="text/css">
+.placeheld {
+  color: #A0A0A0;
+  font-style: italic;
+}
+  </style>
+</head>
+<body>
+  <form method="GET" action="">
+    <input name="placeholder" placeholder="Placeheld Text">
+    <input name="autofocus" autofocus>
+    <input name="required" required>
+    <input type="submit">
+  </form>
+  <script src="minform.js"></script>
+  <script type="text/javascript">
+    minform(document.querySelector('form'));
+  </script>
+</body>
+</html>

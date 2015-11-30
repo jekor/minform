@@ -1,19 +1,26 @@
-# minform - A Minimalistic Approach to Enhancing Forms
+# minform 2.0 - A Minimalist JavaScript Form Enhancer
 
 Demo at http://www.minjs.com/#minform
 
-## Philosophy
+## Features
 
-* **minimal markup**: HTML5 form attributes
-* **minimal code**: leaning on jQuery to do the heavy lifting
-* **minimal UI**: subtle hints rather than explicit instructions
+* minimal markup: HTML5 form attributes
+* minimal code: and no library dependencies
+* minimal UI: subtle hints rather than explicit instructions
+
+## How to Use
+
+```JavaScript
+var form = document.getElementById('yourForm');
+minform(form);
+```
 
 ## Features
 
 ### placeholders
 
 ```HTML
-<input placeholder="sometext">
+<input placeholder="some text">
 ```
 
 You need to style "placeheld" inputs yourself. A good default is:
@@ -31,7 +38,7 @@ You need to style "placeheld" inputs yourself. A good default is:
 <input autofocus>
 ```
 
-Automatically focuses the element on `document.ready`.
+Automatically focuses the element when `minform()` is called on it. Note that only the first autofocus input is focused.
 
 ### required
 
@@ -39,9 +46,8 @@ Automatically focuses the element on `document.ready`.
 <input required>
 ```
 
-Will block form submission and focus the required element if it's not been
-filled in.
+Will block form submission and focus the required element if it has not been filled in.
 
-## Dependencies
+## Unsupported Browsers
 
-jQuery >= 1.4.3
+* Internet Explorer <= 8
